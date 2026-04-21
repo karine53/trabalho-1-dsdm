@@ -31,12 +31,13 @@ class TelaInicial extends StatelessWidget {
         centerTitle: true,
       ),
 
+      // aqui é o corpo da tela
       body: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(height: 20),
 
-            // FOTO NO CÍRCULO (CORRETO)
+            // minha foto bonitinha
             const CircleAvatar(
               radius: 60,
               backgroundImage: AssetImage('imagens/eu.jpg'),
@@ -44,6 +45,7 @@ class TelaInicial extends StatelessWidget {
 
             const SizedBox(height: 15),
 
+            // meu nome
             const Text(
               "Karine Johann",
               style: TextStyle(
@@ -52,6 +54,7 @@ class TelaInicial extends StatelessWidget {
               ),
             ),
 
+            // minha função
             const Text(
               "Desenvolvedora Flutter",
               style: TextStyle(fontSize: 16),
@@ -59,6 +62,7 @@ class TelaInicial extends StatelessWidget {
 
             const SizedBox(height: 30),
 
+            // parte da escolaridade
             Card(
               margin: const EdgeInsets.all(10),
               child: ListTile(
@@ -77,6 +81,7 @@ class TelaInicial extends StatelessWidget {
               ),
             ),
 
+            // parte dos projetos
             Card(
               margin: const EdgeInsets.all(10),
               child: ListTile(
@@ -95,6 +100,7 @@ class TelaInicial extends StatelessWidget {
               ),
             ),
 
+            // recomendações
             Card(
               margin: const EdgeInsets.all(10),
               child: ListTile(
@@ -132,6 +138,7 @@ class _TelaListaState extends State<TelaLista> {
   List<String> itens = [];
   TextEditingController controller = TextEditingController();
 
+  // adiciona item na lista
   void adicionarItem() {
     if (controller.text.isNotEmpty) {
       setState(() {
@@ -141,6 +148,7 @@ class _TelaListaState extends State<TelaLista> {
     }
   }
 
+  // remove item da lista
   void removerItem(int index) {
     setState(() {
       itens.removeAt(index);
@@ -153,15 +161,20 @@ class _TelaListaState extends State<TelaLista> {
       appBar: AppBar(
         title: Text(widget.titulo),
       ),
+
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(12),
+
+            // aqui digita o que vai adicionar
             child: TextField(
               controller: controller,
               decoration: InputDecoration(
                 labelText: "Adicionar item",
                 border: const OutlineInputBorder(),
+
+                // botão de adicionar
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.add),
                   onPressed: adicionarItem,
@@ -169,12 +182,16 @@ class _TelaListaState extends State<TelaLista> {
               ),
             ),
           ),
+
+          // lista dos itens
           Expanded(
             child: ListView.builder(
               itemCount: itens.length,
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(itens[index]),
+
+                  // botão de apagar
                   trailing: IconButton(
                     icon: const Icon(Icons.delete, color: Colors.red),
                     onPressed: () => removerItem(index),
