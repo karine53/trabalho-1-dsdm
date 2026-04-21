@@ -30,17 +30,16 @@ class TelaInicial extends StatelessWidget {
         title: const Text("Meu Currículo"),
         centerTitle: true,
       ),
+
       body: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(height: 20),
 
-            // WIDGET 1 -> CircleAvatar
+            // FOTO NO CÍRCULO (CORRETO)
             const CircleAvatar(
               radius: 60,
-              backgroundImage: NetworkImage(
-                'https://i.imgur.com/BoN9kdC.png',
-              ),
+              backgroundImage: AssetImage('imagens/eu.jpg'),
             ),
 
             const SizedBox(height: 15),
@@ -60,7 +59,6 @@ class TelaInicial extends StatelessWidget {
 
             const SizedBox(height: 30),
 
-            // WIDGET 2 -> Card
             Card(
               margin: const EdgeInsets.all(10),
               child: ListTile(
@@ -159,13 +157,11 @@ class _TelaListaState extends State<TelaLista> {
         children: [
           Padding(
             padding: const EdgeInsets.all(12),
-
-            // WIDGET 3 -> TextField
             child: TextField(
               controller: controller,
               decoration: InputDecoration(
                 labelText: "Adicionar item",
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.add),
                   onPressed: adicionarItem,
@@ -173,7 +169,6 @@ class _TelaListaState extends State<TelaLista> {
               ),
             ),
           ),
-
           Expanded(
             child: ListView.builder(
               itemCount: itens.length,
